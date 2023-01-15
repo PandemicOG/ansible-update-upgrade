@@ -1,0 +1,12 @@
+- hosts: all
+  remote_user: $USER
+  vars:
+    ansible_ssh_private_key_file: '/path/to/ssh.key/file'
+  become: yes
+
+  tasks:
+  - name: Update and upgrade apt packages
+    apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 86400 #change this as you need, works great for older raspberry pis and underpowered vms
